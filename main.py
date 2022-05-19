@@ -1,7 +1,25 @@
 import cv2
 import time
-
+import requests
 from matplotlib.colors import cnames
+
+
+weights = 'https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights'
+cfg = 'https://raw.githubusercontent.com/AlexeyAB/darknet/master/cfg/yolov4.cfg'
+tine_weights = 'https://raw.githubusercontent.com/AlexeyAB/darknet/master/cfg/yolov4-tiny.cfg'
+tine_cfg = 'https://raw.githubusercontent.com/AlexeyAB/darknet/master/cfg/yolov4-tiny.cfg'
+
+r_weights = requests.get(weights, allow_redirects=True)
+open('Documents/yolo/weights', 'wb').write(r_weights.content)
+
+r_cfg = requests.get(cfg, allow_redirects=True)
+open('Documents/yolo/cfg', 'wb').write(r_cfg.content)
+
+r_tine_weights = requests.get(tine_weights, allow_redirects=True)
+open('Documents/yolo/tine_weights').write(r_tine_weights.content)
+
+r_tine_cfg = requests.get(tine_cfg, allow_redirects=True)
+open('Documents/yolo/tine_cfg').write(r_tine_cfg.content)
 
 # Cores das classes
 colors = [(0,255,255), (255,255,0), (0,255,0), (255,0,0)]
